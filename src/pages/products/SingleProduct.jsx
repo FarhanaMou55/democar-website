@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import CartDesign from "./CartDesign";
 import HeadDetails from "../../Components/HeadDetails";
 import { useGlobalContext } from "../../context/GlobalState";
+import RatingStars from "../RatingStars ";
 
 const SingleProduct = () => {
   const [quantity, setQuantity] = useState(1);
@@ -121,12 +122,7 @@ const SingleProduct = () => {
               <p className="text-sm text-gray-500 mt-2">{product.subtitle}</p>
               <div className="flex items-center space-x-2 mt-4">
                 <div className="flex items-center text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className={`mr-1 ${i >= product.rating ? "text-gray-300" : ""}`}
-                    />
-                  ))}
+                  <RatingStars rating={product.rating} />
                 </div>
                 <span className="text-sm text-gray-600">{product.review} Reviews</span>
               </div>

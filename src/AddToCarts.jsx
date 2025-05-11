@@ -3,12 +3,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import HeadDetails from "./Components/HeadDetails";
 import { useGlobalContext } from "./context/GlobalState";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddToCarts = () => {
   const { cartItems, setCartItems } = useGlobalContext();
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce((total, item) => {
     const price = parseFloat(item.discountPrice || item.price) || 0;
@@ -42,9 +42,7 @@ const AddToCarts = () => {
   };
 
   const handleProceedToCheckout = () => {
-    // Clear cart items before navigating to the checkout page
-    setCartItems([]);
-    navigate("/payment"); // Navigate to the Payment page
+    navigate("/payment"); // ✅ Do NOT clear cart here
   };
 
   return (

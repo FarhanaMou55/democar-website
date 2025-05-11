@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
     "daisyui": "^5.0.28",
+    "framer-motion": "^12.10.5",
     "lightningcss": "^1.29.3",
     "lucide-react": "^0.507.0",
     "react": "^19.0.0",

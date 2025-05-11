@@ -6,6 +6,7 @@ import { useGlobalContext } from "../../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RatingStars from "../RatingStars ";
 
 const CartDesign = ({
   productId,
@@ -86,11 +87,7 @@ const CartDesign = ({
         <p className="text-xs md:text-sm text-gray-500 mt-1">{category}</p>
 
         <div className="flex items-center mt-2">
-          <span className="text-yellow-400 flex items-center">
-            {[...Array(5)].map((_, i) => (
-              <FaStar key={i} className={`mr-1 ${i >= rating ? 'text-gray-300' : ''}`} />
-            ))}
-          </span>
+          <RatingStars rating={rating} />
           <span className="ml-2 text-gray-600 text-xs md:text-sm">({rating})</span>
         </div>
 
