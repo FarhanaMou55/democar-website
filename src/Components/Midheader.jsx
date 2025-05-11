@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import logo from "../assets/Black and White Automotive Logo.png";
 import { FaRegUser } from "react-icons/fa6";
@@ -7,10 +7,23 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 import { useGlobalContext } from '../context/GlobalState';
 
+import Modal from './login,signup/Modal';
+import Login from './login,signup/Login';
+import Signup from './login,signup/Signup';
 
 const Midheader = () => {
   const { wishlistItems, cartItems } = useGlobalContext();
-  console.log(wishlistItems, cartItems);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState("login"); // 'login' or 'signup'
+
+  const openModal = (mode) => {
+    setAuthMode(mode);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const renderIconWithBadge = (Icon, count) => (
     <div className="relative">
@@ -50,9 +63,29 @@ const Midheader = () => {
         {/* Icons */}
         <div className="hidden lg:flex items-center">
           <div className="flex justify-center gap-6">
-            <Link to="/signup">
+
+            {/* User Dropdown with Modal */}
+            <div className="relative group cursor-pointer">
               <FaRegUser className="text-2xl text-black" />
-            </Link>
+              <ul className="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-md opacity-0 group-hover:opacity-100 transition-opacity z-20 py-2">
+                <li>
+                  <button
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                    onClick={() => openModal("signup")}
+                  >
+                    Sign Up
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                    onClick={() => openModal("login")}
+                  >
+                    Login
+                  </button>
+                </li>
+              </ul>
+            </div>
 
             <Link to="/wishlist">
               {renderIconWithBadge(FaRegHeart, wishlistItems.length)}
@@ -82,6 +115,15 @@ const Midheader = () => {
           </div>
         </div>
       </div>
+
+      {/* Auth Modal */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {authMode === "login" ? (
+          <Login switchToSignup={() => setAuthMode("signup")} />
+        ) : (
+          <Signup switchToLogin={() => setAuthMode("login")} />
+        )}
+      </Modal>
     </div>
   );
 };

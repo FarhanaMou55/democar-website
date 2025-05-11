@@ -3,11 +3,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import HeadDetails from "./Components/HeadDetails";
 import { useGlobalContext } from "./context/GlobalState";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "react-toastify/dist/ReactToastify.css";
-
 
 const AddToCarts = () => {
   const { cartItems, setCartItems } = useGlobalContext();
+  const navigate = useNavigate(); // Initialize navigate
 
   const totalPrice = cartItems.reduce((total, item) => {
     const price = parseFloat(item.discountPrice || item.price) || 0;
@@ -35,11 +36,16 @@ const AddToCarts = () => {
     );
   };
 
- const handleRemove = (cartItemId) => {
-  setCartItems(prev => prev.filter(item => item.cartItemId !== cartItemId));
-  toast.success("Item removed from cart");
-};
+  const handleRemove = (cartItemId) => {
+    setCartItems(prev => prev.filter(item => item.cartItemId !== cartItemId));
+    toast.success("Item removed from cart");
+  };
 
+  const handleProceedToCheckout = () => {
+    // Clear cart items before navigating to the checkout page
+    setCartItems([]);
+    navigate("/payment"); // Navigate to the Payment page
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,10 +65,7 @@ const AddToCarts = () => {
                 const quantity = parseInt(item.quantity) || 1;
 
                 return (
-                  <div
-                    key={item.cartItemId}
-                    className="border-b border-gray-200 pb-4"
-                  >
+                  <div key={item.cartItemId} className="border-b border-gray-200 pb-4">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div className="flex items-center gap-4 w-full sm:w-auto">
                         <img
@@ -147,7 +150,10 @@ const AddToCarts = () => {
                     ${totalPrice.toFixed(2)}
                   </div>
                 </div>
-                <button className="mt-4 w-full bg-[#ff0000] hover:bg-orange-600 text-white py-2 rounded-md transition-colors cursor-pointer">
+                <button
+                  onClick={handleProceedToCheckout}
+                  className="mt-4 w-full bg-[#ff0000] hover:bg-orange-600 text-white py-2 rounded-md transition-colors cursor-pointer"
+                >
                   Proceed to Checkout
                 </button>
               </div>

@@ -25,6 +25,9 @@ import SingleBlog from './pages/products/blog/SingleBlog.jsx';
 import Wishlist from './Wishlist.jsx';
 import AddToCarts from './AddToCarts.jsx';
 import { GlobalProvider } from './context/GlobalState.jsx';
+import Login from './Components/login,signup/Login.jsx';
+import Signup from './Components/login,signup/Signup.jsx';
+import Payment from './Payment.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,16 +69,20 @@ const router = createBrowserRouter([
         path: "/wishlist",
         element: <Wishlist />,
       },
+      {
+        path: "/payment",
+        element: <Payment />,
+      },
     ],
   },
-  // {
-  //   path: "/login",
-  //   element: <Login />,
-  // },
-  // {
-  //   path: "/signup",
-  //   element: <Signup />,
-  // },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
 ]);
 
 
