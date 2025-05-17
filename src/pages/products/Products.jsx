@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import LeftCategory from "./LeftCategory";
 import RightProductsDetalis from "./RightProductsDetalis";
+import carData from "../products/data/carData"; // make sure path is correct
+import categoryData from "../products/data/categoryData"; // make sure path is correct
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,46 +14,37 @@ const Products = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // ✅ Fetch product data
+  // Load static data
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-        setError("Failed to load products.");
-        setLoading(false);
-      });
+    try {
+      setProducts(carData);
+      setProductCategories(categoryData);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error loading data:", err);
+      setError("Failed to load data.");
+      setLoading(false);
+    }
   }, []);
 
-  // ✅ Fetch category data
-  useEffect(() => {
-    fetch("/src/assets/Productscategory.json")
-      .then((res) => res.json())
-      .then((data) => setProductCategories(data))
-      .catch((error) => console.error("Error fetching categories:", error));
-  }, []);
-
-  // ✅ Read category from URL only after products are loaded
+  // Sync URL -> Category selection
   useEffect(() => {
     if (products.length === 0) return;
-
     const categoryParam = searchParams.get("category");
     if (categoryParam) {
-      setSelectedCategories([categoryParam]);
+      const decodedCategory = decodeURIComponent(categoryParam);
+      setSelectedCategories([decodedCategory]);
     } else {
       setSelectedCategories([]);
     }
   }, [searchParams, products]);
 
-  // ✅ Sync selected category to URL
+  // Sync Category selection -> URL
   useEffect(() => {
     if (selectedCategories.length > 0) {
       setSearchParams({ category: selectedCategories[0] });
@@ -60,17 +53,13 @@ const Products = () => {
     }
   }, [selectedCategories, setSearchParams]);
 
-  // ✅ Filter products by category (case-insensitive)
+  // Filter products by selected category
   const filteredProducts =
     selectedCategories.length > 0 && selectedCategories[0] !== "All"
       ? products.filter((product) =>
-          selectedCategories.some(
-            (cat) =>
-              product.category &&
-              product.category.toLowerCase() === cat.toLowerCase()
-          )
+          selectedCategories.includes(product.category)
         )
-      : products; // If "All" is selected, show all products
+      : products;
 
   return (
     <div className="px-4 mt-6 my-8 w-10/12 mx-auto gap-4">
@@ -83,7 +72,7 @@ const Products = () => {
           <div className="text-center text-red-500 text-lg">{error}</div>
         ) : (
           <div className="flex flex-col-reverse lg:flex-row gap-10 mb-10 lg:mb-16">
-            {/* Sidebar */}
+            {/* Left: Category Filters */}
             <div className="w-full lg:w-1/4">
               <LeftCategory
                 productCategories={productCategories}
@@ -92,11 +81,11 @@ const Products = () => {
               />
             </div>
 
-            {/* Main Product Grid */}
+            {/* Right: Product List */}
             <div className="w-full lg:w-3/4">
               {filteredProducts.length === 0 ? (
                 <div className="text-center text-gray-500 text-lg">
-                  No products found for selected category.
+                  No products found for the selected category.
                 </div>
               ) : (
                 <RightProductsDetalis

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaRegHeart, FaShoppingCart, FaStar } from "react-icons/fa";
+import { FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 
@@ -8,6 +8,7 @@ import CartDesign from "./CartDesign";
 import HeadDetails from "../../Components/HeadDetails";
 import { useGlobalContext } from "../../context/GlobalState";
 import RatingStars from "../RatingStars ";
+import carData from "../products/data/carData"; // ✅ Adjust path if needed
 
 const SingleProduct = () => {
   const [quantity, setQuantity] = useState(1);
@@ -23,25 +24,16 @@ const SingleProduct = () => {
   }, []);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const filterProduct = data.find((prod) => prod.id == id);
-        setProduct(filterProduct);
-      });
+    const foundProduct = carData.find((prod) => String(prod.id) === id);
+    setProduct(foundProduct);
   }, [id]);
 
   useEffect(() => {
     if (product) {
-      fetch("/src/pages/products/Products.json")
-        .then((res) => res.json())
-        .then((data) => {
-          const filteredRelatedProducts = data.filter(
-            (item) => item.category === product.category && item.id !== product.id
-          );
-          setRelatedProducts(filteredRelatedProducts);
-        })
-        .catch((error) => console.error("Error fetching related products:", error));
+      const filteredRelatedProducts = carData.filter(
+        (item) => item.category === product.category && item.id !== product.id
+      );
+      setRelatedProducts(filteredRelatedProducts);
     }
   }, [product]);
 

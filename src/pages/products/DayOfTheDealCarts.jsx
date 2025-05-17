@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CartDesign from "./CartDesign"; // Adjust path as needed
+import CartDesign from "./CartDesign"; // Adjust path if needed
+import carData from "../products/data/carData"; // Adjust the path based on your structure
 
 const DayOfTheDealCarts = () => {
   const [products, setProducts] = useState([]);
@@ -10,18 +11,15 @@ const DayOfTheDealCarts = () => {
     seconds: 59,
   });
 
+  // ✅ Filter products from imported carData
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter(
-          (item) => item.productDisplayCategory === "Day-Of-The-Deal"
-        );
-        setProducts(filtered);
-      })
-      .catch((err) => console.error("Error loading deals:", err));
+    const filtered = carData.filter(
+      (item) => item.productDisplayCategory === "Day-Of-The-Deal"
+    );
+    setProducts(filtered);
   }, []);
 
+  // ✅ Timer countdown logic
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
@@ -51,9 +49,9 @@ const DayOfTheDealCarts = () => {
   return (
     <div className="px-4 mt-6 my-8 w-10/12 mx-auto gap-4 object-contain">
       <h2 className="text-2xl font-bold mb-4">🔥 Deals of the Day</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2   gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {products.map((product) => (
-          <div key={product.id} className=" rounded-xl  p-4">
+          <div key={product.id} className="rounded-xl p-4">
             <CartDesign
               productId={product.id}
               title={product.title}
@@ -63,9 +61,6 @@ const DayOfTheDealCarts = () => {
               discountPrice={product.discountPrice}
               price={product.price}
               discountPresent={product.discountPresent}
-              // productSell={product.productSell}
-              // viewCart={product.viewCart}
-              // review={product.review}
               productDisplayCategory={product.productDisplayCategory}
               timeLeft={timeLeft}
             />

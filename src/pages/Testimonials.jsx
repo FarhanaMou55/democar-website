@@ -1,40 +1,48 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// ✅ Import images directly
+import img1 from "../assets/handsome-bearded-guy-posing-against-white-wall.jpg";
+import img2 from "../assets/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg";
+import img3 from "../assets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction.jpg";
+import img4 from "../assets/young-bearded-man-with-striped-shirt.jpg";
+import img5 from "../assets/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair.jpg";
+
+// ✅ Use imported images in the array
 const testimonials = [
   {
     id: 1,
     name: "Emily Johnson",
     position: "Marketing Manager",
-    image: "/src/assets/handsome-bearded-guy-posing-against-white-wall.jpg",
+    image: img1,
     review: "Their service truly transformed our business approach. Highly recommended!",
   },
   {
     id: 2,
     name: "James Smith",
     position: "E-commerce Owner",
-    image: "/src/assets/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg",
+    image: img2,
     review: "Great attention to detail and fast turnaround time!",
   },
   {
     id: 3,
     name: "Sarah Williams",
     position: "Creative Director",
-    image: "/src/assets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction.jpg",
+    image: img3,
     review: "A pleasure to work with. They understood our vision perfectly.",
   },
   {
     id: 4,
     name: "Michael Brown",
     position: "Startup Founder",
-    image: "/src/assets/young-bearded-man-with-striped-shirt.jpg",
+    image: img4,
     review: "Professional, punctual, and very creative. Couldn't ask for more.",
   },
   {
     id: 5,
     name: "Olivia Davis",
     position: "Social Media Strategist",
-    image: "/src/assets/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair.jpg",
+    image: img5,
     review: "Fantastic results and very easy communication throughout the project.",
   },
 ];
@@ -95,7 +103,9 @@ const Testimonials = () => {
             <p className="text-sm text-[#ff0000] mb-2">
               {testimonial.position}
             </p>
-            <p className="text-gray-600 text-sm italic">"{testimonial.review}"</p>
+            <p className="text-gray-600 text-sm italic">
+              "{testimonial.review}"
+            </p>
           </div>
         ))}
       </div>

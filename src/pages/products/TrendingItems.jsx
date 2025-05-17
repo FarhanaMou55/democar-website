@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CartDesign from "./CartDesign";
-
+import carData from "../products/data/carData"; // ✅ Adjust path if needed
 
 const TrendingItems = ({ selectedCategory }) => {
   const [allProducts, setAllProducts] = useState([]);
@@ -8,20 +8,13 @@ const TrendingItems = ({ selectedCategory }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const trendingProducts = data.filter(
-          (product) => product.productDisplayCategory === "Trending-Items"
-        );
-        setAllProducts(trendingProducts);
-        setFilteredProducts(trendingProducts);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching trending products:", error);
-        setLoading(false);
-      });
+    // ✅ Filter only trending items from carData
+    const trendingProducts = carData.filter(
+      (product) => product.productDisplayCategory === "Trending-Items"
+    );
+    setAllProducts(trendingProducts);
+    setFilteredProducts(trendingProducts);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -47,7 +40,6 @@ const TrendingItems = ({ selectedCategory }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
           {filteredProducts.map((product) => (
             <CartDesign
-              productDisplayCategory={product.productDisplayCategory}
               key={product.id}
               productId={product.id}
               title={product.title}
@@ -60,6 +52,7 @@ const TrendingItems = ({ selectedCategory }) => {
               productSell={product.productSell}
               viewCart={product.viewCart}
               review={product.review}
+              productDisplayCategory={product.productDisplayCategory}
             />
           ))}
         </div>

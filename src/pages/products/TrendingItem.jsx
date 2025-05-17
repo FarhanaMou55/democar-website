@@ -1,35 +1,29 @@
 import React, { useState, useEffect } from "react";
 import TrendingItems from "./TrendingItems";
+import carData from "../products/data/carData"; // ✅ Adjust the path to your dataset
 
 const TrendingItem = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        // Filter only trending items
-        const trendingProducts = data.filter(
-          (product) => product.productDisplayCategory === "Trending-Items"
-        );
+    // ✅ Filter trending items from carData
+    const trendingProducts = carData.filter(
+      (product) => product.productDisplayCategory === "Trending-Items"
+    );
 
-        // Extract unique categories
-        const uniqueCategories = [
-          { id: 0, name: "All" },
-          ...Array.from(
-            new Set(trendingProducts.map((item) => item.category))
-          ).map((cat, index) => ({
-            id: index + 1,
-            name: cat,
-          }))
-        ];
+    // ✅ Extract unique categories from trending items
+    const uniqueCategories = [
+      { id: 0, name: "All" },
+      ...Array.from(new Set(trendingProducts.map((item) => item.category)))
+        .filter(Boolean)
+        .map((cat, index) => ({
+          id: index + 1,
+          name: cat,
+        }))
+    ];
 
-        setCategory(uniqueCategories);
-      })
-      .catch((error) =>
-        console.error("Error loading Trending Items categories:", error)
-      );
+    setCategory(uniqueCategories);
   }, []);
 
   return (
@@ -41,7 +35,7 @@ const TrendingItem = () => {
               Trending <span className="text-[#ff0000]">Items</span>
             </h2>
             <p className="text-sm text-gray-500 mt-2">
-                Explore the latest trends in fashion, electronics, and more.
+              Explore the latest trends in fashion, electronics, and more.
             </p>
           </div>
 
