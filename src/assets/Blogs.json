@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/audi-1868726_1280.jpg",
+      "image": "./Audi A4 2023.jpg",
       "title": "The Evolution of Audi's Performance Line",
       "subtitle": "Discover how Audi's R and RS models became symbols of luxury and speed.",
       "description": "Audi’s performance division has evolved drastically over the years. From the legendary Quattro to the modern-day R8 and RS series, the brand has pushed innovation and engineering to deliver unmatched performance, luxurious comfort, and sleek German styling.",
@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "image": "https://cdn.pixabay.com/photo/2017/01/06/19/15/ford-1957037_1280.jpg",
+      "image": "./Ford Mustang Mach-E.jpg",
       "title": "Why Muscle Cars Still Dominate American Roads",
       "subtitle": "Explore the raw power and nostalgia that keeps muscle cars alive.",
       "description": "Muscle cars like the Ford Mustang and Dodge Challenger continue to thrive due to their bold styling, rumbling V8s, and pure driving excitement. Despite modern emissions regulations and the rise of EVs, these American icons still capture hearts.",
@@ -25,7 +25,7 @@
     },
     {
       "id": 3,
-      "image": "https://cdn.pixabay.com/photo/2013/07/13/13/41/bmw-160867_1280.png",
+      "image": "./Mercedes-Benz GLC 2024.webp",
       "title": "Top 5 German Sports Cars of the Decade",
       "subtitle": "From Autobahn to racetrack—Germany's best performance machines.",
       "description": "Germany is home to some of the world’s finest sports cars. This list explores the best from Porsche, BMW, Audi, and Mercedes-AMG—known for speed, precision, and luxury. Find out what makes them dominate the global sports car scene.",
@@ -37,7 +37,7 @@
     },
     {
       "id": 4,
-      "image": "https://cdn.pixabay.com/photo/2015/01/19/13/51/tesla-604923_1280.jpg",
+      "image": "./bmw-f30-vorsteiner-wallpaper-preview.jpg",
       "title": "How Electric Cars Are Changing the Auto Industry",
       "subtitle": "A deep dive into the EV revolution led by Tesla and others.",
       "description": "Electric cars are no longer a futuristic idea. Tesla's Model S, Ford's Lightning, and Hyundai’s Ioniq series are revolutionizing how we think about driving. Cleaner, faster, and smarter—EVs are becoming the new norm in personal transportation.",
@@ -49,7 +49,7 @@
     },
     {
       "id": 5,
-      "image": "https://cdn.pixabay.com/photo/2020/02/02/09/55/toyota-4815003_1280.jpg",
+      "image": "./2023-corolla-hybrid-se-rubyflarepearl-016-1665769538.avif",
       "title": "JDM Legends: Why the Toyota Supra Still Reigns",
       "subtitle": "Uncover the story behind Japan's most loved sports car.",
       "description": "The Toyota Supra has earned a cult following worldwide, from street races to movies. Its powerful turbo engine, iconic styling, and tunability make it one of the most respected JDM vehicles of all time—especially the MK4 and GR models.",

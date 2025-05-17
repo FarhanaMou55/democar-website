@@ -6,8 +6,8 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 
 const Topfooter = () => {
     return (
-        <div className='bg-[#ff0000] p-3 w-11/12 md:w-10/12 mx-auto'>
-            <div className='flex flex-col md:flex-row justify-between items-start md:items-center py-2 md:divide-x md:divide-white'>
+        <div className='bg-[#ff0000] p-3 '>
+            <div className='flex flex-col md:flex-row justify-between items-start md:items-center py-2 md:divide-x md:divide-white w-11/12 md:w-10/12 mx-auto'>
                 <div className='flex items-start md:items-center text-white px-0 md:px-4 py-2'>
                     <LiaShippingFastSolid className='text-4xl md:text-5xl' />
                     <div className='flex flex-col ml-2'>

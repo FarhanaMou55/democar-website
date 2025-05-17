@@ -88,8 +88,8 @@ const Home = () => {
                     <div className="absolute top-0 left-0 w-full h-full  z-10"></div>
 
                     {/* Text Content */}
-                    <div className="relative z-20 h-full flex items-center justify-end pr-10 text-white text-left">
-                        <div className="max-w-sm">
+                    <div className="relative z-20 h-full flex items-center justify-end pr-10 text-white  md:text-left">
+                        <div className="max-w-sm  ">
                             <h1 className="mb-5 uppercase text-5xl font-bold">{currentSlide.title}</h1>
                             <p className="mb-5 text-xl">{currentSlide.description}</p>
                             <Link to="/products">

@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="bg-white border-t border-b border-gray-200 hidden lg:block ">
-        <div className="flex gap-6 items-center w-11/12 md:w-10/12 mx-auto py-2">
+        <div className="flex justify-between items-center w-11/12 md:w-10/12 mx-auto py-2">
           <div className="flex items-center gap-10">
             <div className="relative" ref={dropdownRef}>
               <div
@@ -100,8 +100,13 @@ const Navbar = () => {
               <Link to="/products" className="cursor-pointer">Products</Link>
               <Link to="/blogs" className="cursor-pointer">Blog</Link>
               <Link to="/about" className="cursor-pointer">About</Link>
-              <Link to="/contacts" className="cursor-pointer">Contact</Link>
+
             </ul>
+          </div>
+          <div className='btn bg-[#ff0000] border-none text-white px-4 py-5 rounded-md hover:bg-black transition duration-300 cursor-pointer flex gap-10'>
+
+            <Link to="/contacts" className="cursor-pointer">Contact Us</Link>
+
           </div>
         </div>
       </div>

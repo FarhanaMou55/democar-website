@@ -19,7 +19,7 @@ const BlogDetails = ({ blogs, selectedCategories }) => {
             <div className="relative w-full h-48">
               <img
                 className="w-full h-full object-cover"
-                src={blog.image}
+                src={`/src/assets/${blog.image.replace('./', '')}`}
                 alt={blog.title}
               />
             </div>

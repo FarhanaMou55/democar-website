@@ -39,7 +39,7 @@ const SingleBlog = () => {
             <div className="max-w-5xl mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden">
               <div className="h-64 md:h-80 lg:h-96 overflow-hidden">
                 <img
-                  src={blog.image}
+                  src={`/src/assets/${blog.image.replace('./', '')}`}
                   alt={blog.title}
                   className="w-full h-full object-cover"
                 />
