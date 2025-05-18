@@ -15,7 +15,7 @@ import bmwX5Img from "../../assets/BMW X5.jpg";
 import rav4HybridImg from "../../assets/Toyota RAV4 Hybrid.jpg";
 import audiQ5Img from "../../assets/Audi Q5.jpg";
 import rogueImg from "../../assets/Nissan Rogue 2023.webp";
-import bmwM4Img from "../../assets/BMW-M4-Backgrounds-Desktop.jpg";
+import bmwM4Img from "../../assets/Bmw-M4-Backgrounds-Desktop.jpg";
 import fordBroncoImg from "../../assets/Ford Bronco 2023.webp";
 import audiA4Img from "../../assets/Audi A4 2023.jpg";
 import mercedesGLCImg from "../../assets/Mercedes-Benz GLC 2024.webp";
@@ -34,7 +34,7 @@ const imageMap = {
   "Toyota RAV4 Hybrid.jpg": rav4HybridImg,
   "Audi Q5.jpg": audiQ5Img,
   "Nissan Rogue 2023.webp": rogueImg,
-  "BMW-M4-Backgrounds-Desktop.jpg": bmwM4Img,
+  "Bmw-M4-Backgrounds-Desktop.jpg": bmwM4Img,
   "Ford Bronco 2023.webp": fordBroncoImg,
   "Audi A4 2023.jpg": audiA4Img,
   "Mercedes-Benz GLC 2024.webp": mercedesGLCImg,
