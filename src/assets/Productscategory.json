@@ -1,0 +1,60 @@
+[
+    {
+      "id": 0,
+      "name": "All",
+      "image": "/src/assets/mini-cooper-car-logo-png_seeklogo-255288.png"
+      
+    },
+    {
+      "id": 1,
+      "name": "Toyota",
+      "image": "/src/assets/toyota-seeklogo.png"
+      
+    },
+    {
+      "id": 2,
+      "name": "Honda",
+      "image": "/src/assets/honda-silver-logo-png_seeklogo-289413.png"
+    },
+    {
+      "id": 3,
+      "name": "Ford",
+      "image": "/src/assets/ford-seeklogo.png"
+    },
+    {
+      "id": 4,
+      "name": "BMW",
+      "image": "/src/assets/bmw-seeklogo.png"
+    },
+    {
+      "id": 5,
+      "name": "Mercedes",
+      "image": "/src/assets/mercedes-benz-logo-png_seeklogo-190348.png"
+    },
+    {
+      "id": 6,
+      "name": "Tesla",
+      "image": "/src/assets/tesla-logo-png_seeklogo-365010.png"
+    },
+    {
+      "id": 7,
+      "name": "Nissan",
+      "image": "/src/assets/nissan-logo-png_seeklogo-99770.png"
+    },
+    {
+      "id": 8,
+      "name": "Chevrolet",
+      "image": "/src/assets/chevrolet-logo-png_seeklogo-29488.png"
+    },
+    {
+      "id": 9,
+      "name": "Audi",
+      "image": "/src/assets/audi-logo-png_seeklogo-13450.png"
+    },
+    {
+      "id": 10,
+      "name": "Hyundai",
+      "image": "/src/assets/hyundai-logo-png_seeklogo-309777.png"
+    }
+  ]
+  

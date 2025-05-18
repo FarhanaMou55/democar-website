@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import categoryData from "../products/data/categoryData";
 
 const Categories = () => {
-  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const categoriesPerSlide = 6;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("/src/assets/Productscategory.json")
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error("Error loading categories:", err));
+  }, []);
 
   const handleCategoryClick = (category) => {
     navigate(`/products?category=${encodeURIComponent(category.name)}`);
@@ -14,15 +21,19 @@ const Categories = () => {
 
   const nextSlide = () => {
     const nextIndex = currentIndex + categoriesPerSlide;
-    if (nextIndex < categoryData.length) setCurrentIndex(nextIndex);
+    if (nextIndex < categories.length) {
+      setCurrentIndex(nextIndex);
+    }
   };
 
   const prevSlide = () => {
     const prevIndex = currentIndex - categoriesPerSlide;
-    if (prevIndex >= 0) setCurrentIndex(prevIndex);
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
+    }
   };
 
-  const visibleCategories = categoryData.slice(
+  const visibleCategories = categories.slice(
     currentIndex,
     currentIndex + categoriesPerSlide
   );
@@ -40,17 +51,18 @@ const Categories = () => {
           <FaArrowLeft />
         </button>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 ">
           {visibleCategories.map((category) => (
             <div
               key={category.id}
               onClick={() => handleCategoryClick(category)}
-              className="cursor-pointer text-center shadow hover:shadow-lg transition duration-300 rounded-lg p-4 bg-amber-100 hover:text-white hover:bg-[#ff0000]"
+              className=" cursor-pointer text-center shadow hover:shadow-lg transition duration-300 rounded-lg p-4 bg-amber-100 hover:text-white hover:bg-[#ff0000]"
             >
               <img
                 src={category.image}
                 alt={category.name}
-                className="h-20 w-28 mx-auto bg-white object-contain mb-2"
+                className="h-20 w-28 mx-auto bg-white object-contain  mb-2"
+                onError={(e) => (e.target.src = "/fallback.jpg")}
               />
               <h3 className="text-sm font-semibold">{category.name}</h3>
             </div>
@@ -59,9 +71,9 @@ const Categories = () => {
 
         <button
           onClick={nextSlide}
-          disabled={currentIndex + categoriesPerSlide >= categoryData.length}
+          disabled={currentIndex + categoriesPerSlide >= categories.length}
           className={`p-2 bg-gray-300 text-white rounded-full hover:bg-gray-500 transition ${
-            currentIndex + categoriesPerSlide >= categoryData.length
+            currentIndex + categoriesPerSlide >= categories.length
               ? "opacity-50 cursor-not-allowed"
               : ""
           }`}
