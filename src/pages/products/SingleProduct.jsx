@@ -23,7 +23,7 @@ const SingleProduct = () => {
   }, []);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
+    fetch("/Products.json")
       .then((res) => res.json())
       .then((data) => {
         const filterProduct = data.find((prod) => prod.id == id);
@@ -33,7 +33,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     if (product) {
-      fetch("/src/pages/products/Products.json")
+      fetch("/Products.json")
         .then((res) => res.json())
         .then((data) => {
           const filteredRelatedProducts = data.filter(
@@ -135,13 +135,13 @@ const SingleProduct = () => {
                   ${product.price}
                 </p>
                 <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-orange-600 to-[#ff0000] text-white px-3 py-1 rounded-full">
-                  {product.discountPresent}% Off
+                  {product.discountPercent}% Off
                 </span>
               </div>
 
               <div className="mt-6 flex items-center justify-between bg-gray-50 p-4 rounded-lg">
                 <div className="text-sm text-gray-600">
-                  PKU: <span className="font-medium">{product.Model}</span>
+                  PKU: <span className="font-medium">{product.model}</span>
                 </div>
                 <div className="text-sm font-semibold text-[#ff0000]">In Stock</div>
               </div>
@@ -201,7 +201,7 @@ const SingleProduct = () => {
                 rating={relatedProduct.rating}
                 discountPrice={relatedProduct.discountPrice}
                 price={relatedProduct.price}
-                discountPresent={relatedProduct.discountPresent}
+                discountPercent={relatedProduct.discountPercent}
                 productSell={relatedProduct.productSell}
                 viewCart={relatedProduct.viewCart}
                 review={relatedProduct.review}

@@ -65,7 +65,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="w-10/12 mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
       {/* Left: Payment Form */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Personal & Payment Information</h2>

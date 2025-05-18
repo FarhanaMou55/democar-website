@@ -63,9 +63,9 @@ const Home = () => {
             .then((data) => setBlogs(data));
     }, []);
     return (
-        <div>
+        <div >
             <div className="w-full h-screen relative ">
-                <div className=" relative h-full overflow-hidden ">
+                <div className=" relative h-full overflow-hidden w-10/12 mx-auto">
                     {/* Background Media */}
                     {currentSlide.type === "video" ? (
                         <video

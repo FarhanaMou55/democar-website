@@ -16,7 +16,7 @@ const CartDesign = ({
   rating,
   discountPrice,
   price,
-  discountPresent,
+  discountPercent,
   productDisplayCategory,
   timeLeft,
 }) => {
@@ -26,7 +26,7 @@ const CartDesign = ({
   const formatTime = (value) => value.toString().padStart(2, "0");
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // ✅ Prevent event bubbling
+    e.stopPropagation();
     e.preventDefault();
 
     const existingItemIndex = cartItems.findIndex((item) => item.productId === productId);
@@ -55,7 +55,7 @@ const CartDesign = ({
   };
 
   const handleAddToWishlist = (e) => {
-    e.stopPropagation(); // ✅ Prevent card click
+    e.stopPropagation();
     e.preventDefault();
     const existing = wishlistItems.find((item) => item.productId === productId);
     if (!existing) {
@@ -75,7 +75,7 @@ const CartDesign = ({
 
   return (
     <div
-      onClick={handleCardClick} // ✅ whole card is clickable EXCEPT buttons
+      onClick={handleCardClick}
       className="bg-white shadow-xl hover:shadow-2xl rounded-lg transform hover:scale-105 transition-transform duration-300 p-4 cursor-pointer"
     >
       <div className="h-50 rounded-xl overflow-hidden">
@@ -98,10 +98,10 @@ const CartDesign = ({
               ${price}
             </span>
           </p>
-          <p className="text-sm text-green-600">{discountPresent}% Off</p>
+          <p className="text-sm text-green-600">{discountPercent}% Off</p>
         </div>
 
-        {productDisplayCategory === "Day-Of-The-Deal" && (
+        {productDisplayCategory === "Day-Of-The-Deal" && timeLeft && (
           <div className="mt-4 flex gap-4 items-center w-52 border-2 border-gray-400 rounded-lg p-2.5">
             <div className="flex flex-col items-center">
               <span className="countdown font-mono text-xl text-gray-800">{formatTime(timeLeft.days)}</span>

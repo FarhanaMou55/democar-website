@@ -8,7 +8,7 @@ const TrendingItems = ({ selectedCategory }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
+    fetch("/Products.json")
       .then((res) => res.json())
       .then((data) => {
         const trendingProducts = data.filter(
@@ -56,7 +56,7 @@ const TrendingItems = ({ selectedCategory }) => {
               rating={product.rating}
               discountPrice={product.discountPrice}
               price={product.price}
-              discountPresent={product.discountPresent}
+              discountPercent={product.discountPercent}
               productSell={product.productSell}
               viewCart={product.viewCart}
               review={product.review}

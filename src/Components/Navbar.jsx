@@ -10,7 +10,7 @@ const Navbar = () => {
 
   // Fetch categories data from public directory (fixed the fetch path)
   useEffect(() => {
-    fetch("/src/pages/products/Products.json") // Ensure Products.json is inside the 'public/data' folder
+    fetch("/Products.json") // Ensure Products.json is inside the 'public/data' folder
       .then((res) => res.json())
       .then((data) => {
         const uniqueCategories = [

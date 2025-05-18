@@ -9,7 +9,7 @@ const Categories = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/src/assets/Productscategory.json")
+    fetch("/Productscategory.json")
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((err) => console.error("Error loading categories:", err));

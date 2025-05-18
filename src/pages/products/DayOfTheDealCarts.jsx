@@ -11,7 +11,7 @@ const DayOfTheDealCarts = () => {
   });
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
+    fetch("Products.json")
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter(
@@ -62,7 +62,7 @@ const DayOfTheDealCarts = () => {
               rating={product.rating}
               discountPrice={product.discountPrice}
               price={product.price}
-              discountPresent={product.discountPresent}
+              discountPercent={product.discountPercent}
               // productSell={product.productSell}
               // viewCart={product.viewCart}
               // review={product.review}

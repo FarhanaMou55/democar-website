@@ -6,31 +6,35 @@ const TrendingItem = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch("/src/pages/products/Products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        // Filter only trending items
-        const trendingProducts = data.filter(
-          (product) => product.productDisplayCategory === "Trending-Items"
-        );
+  fetch("/Products.json")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      const trendingProducts = data.filter(
+        (product) => product.productDisplayCategory === "Trending-Items"
+      );
 
-        // Extract unique categories
-        const uniqueCategories = [
-          { id: 0, name: "All" },
-          ...Array.from(
-            new Set(trendingProducts.map((item) => item.category))
-          ).map((cat, index) => ({
+      const uniqueCategories = [
+        { id: 0, name: "All" },
+        ...Array.from(new Set(trendingProducts.map((item) => item.category))).map(
+          (cat, index) => ({
             id: index + 1,
             name: cat,
-          }))
-        ];
+          })
+        ),
+      ];
 
-        setCategory(uniqueCategories);
-      })
-      .catch((error) =>
-        console.error("Error loading Trending Items categories:", error)
-      );
-  }, []);
+      setCategory(uniqueCategories);
+    })
+    .catch((error) => console.error("Fetch error:", error));
+}, []);
+
+
+       
 
   return (
     <div className="my-16 md:my-20 w-10/12 mx-auto">
