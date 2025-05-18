@@ -46,7 +46,7 @@ const AddToCarts = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-10/12  mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-6 md:gap-10 lg:gap-12">
         <HeadDetails
           title="Add To"

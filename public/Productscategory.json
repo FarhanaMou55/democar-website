@@ -8,53 +8,53 @@
     {
       "id": 1,
       "name": "Toyota",
-      "image": "/src/assets/toyota-seeklogo.png"
+      "image": "https://i.postimg.cc/8PsJcM6K/toyota-seeklogo.png"
       
     },
     {
       "id": 2,
       "name": "Honda",
-      "image": "/src/assets/honda-silver-logo-png_seeklogo-289413.png"
+      "image": "https://i.postimg.cc/XvqDD2GK/honda-silver-logo-png-seeklogo-289413.png"
     },
     {
       "id": 3,
       "name": "Ford",
-      "image": "/src/assets/ford-seeklogo.png"
+      "image": "https://i.postimg.cc/HnnG0p0m/ford-seeklogo.png"
     },
     {
       "id": 4,
       "name": "BMW",
-      "image": "/src/assets/bmw-seeklogo.png"
+      "image": "https://i.postimg.cc/g26gV93h/bmw-seeklogo.png"
     },
     {
       "id": 5,
       "name": "Mercedes",
-      "image": "/src/assets/mercedes-benz-logo-png_seeklogo-190348.png"
+      "image": "https://i.postimg.cc/FsSSGhnh/mercedes-benz-logo-png-seeklogo-190348.png"
     },
     {
       "id": 6,
       "name": "Tesla",
-      "image": "/src/assets/tesla-logo-png_seeklogo-365010.png"
+      "image": "https://i.postimg.cc/90ZfPQXS/tesla-logo-png-seeklogo-365010.png"
     },
     {
       "id": 7,
       "name": "Nissan",
-      "image": "/src/assets/nissan-logo-png_seeklogo-99770.png"
+      "image": "https://i.postimg.cc/0NQLRXS2/nissan-logo-png-seeklogo-99770.png"
     },
     {
       "id": 8,
       "name": "Chevrolet",
-      "image": "/src/assets/chevrolet-logo-png_seeklogo-29488.png"
+      "image": "https://i.postimg.cc/MK3HJNMv/chevrolet-logo-png-seeklogo-29488.png"
     },
     {
       "id": 9,
       "name": "Audi",
-      "image": "/src/assets/audi-logo-png_seeklogo-13450.png"
+      "image": "https://i.postimg.cc/Y9PY90jm/audi-logo-png-seeklogo-13450.png"
     },
     {
       "id": 10,
       "name": "Hyundai",
-      "image": "/src/assets/hyundai-logo-png_seeklogo-309777.png"
+      "image": "https://i.postimg.cc/DZx5c702/hyundai-logo-png-seeklogo-309777.png"
     }
   ]
   

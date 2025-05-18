@@ -98,7 +98,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1 gap-6 text-black font-bold text-[16px]">
               <Link to="/" className="cursor-pointer">Home</Link>
               <Link to="/products" className="cursor-pointer">Products</Link>
-              <Link to="/blogs" className="cursor-pointer">Blog</Link>
+              <Link to="/blog" className="cursor-pointer">Blog</Link>
               <Link to="/about" className="cursor-pointer">About</Link>
 
             </ul>

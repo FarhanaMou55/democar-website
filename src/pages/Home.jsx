@@ -18,7 +18,7 @@ const slides = [
         source: heroimg2,
         title: "welcome to nexaro",
         description:
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.",
+            "Provident cupiditate voluptatem et in., Quaerat fugiat ut assumenda excepturi exercitationem quasi.",
     },
     {
         type: "image",
@@ -35,7 +35,7 @@ const Home = () => {
     const videoRef = useRef(null);
     const currentSlide = slides[currentIndex];
     const [blogs, setBlogs] = useState([]);
-      
+
 
     // Auto-slide for image
     useEffect(() => {
@@ -47,7 +47,7 @@ const Home = () => {
         }
         return () => clearInterval(timer);
     }, [currentIndex]);
-     
+
 
 
     const prevSlide = () => {
@@ -58,14 +58,14 @@ const Home = () => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
     };
     useEffect(() => {
-        fetch("/src/assets/Blogs.json")
+        fetch("/Blogs.json")
             .then((res) => res.json())
             .then((data) => setBlogs(data));
     }, []);
     return (
         <div >
-            <div className="w-full h-screen relative ">
-                <div className=" relative h-full overflow-hidden w-10/12 mx-auto">
+            <div className="w-full sm:h-fit md:h-screen  relative ">
+                <div className=" relative h-full overflow-hidden sm:w-full md:w-10/12 mx-auto">
                     {/* Background Media */}
                     {currentSlide.type === "video" ? (
                         <video
@@ -88,17 +88,22 @@ const Home = () => {
                     <div className="absolute top-0 left-0 w-full h-full  z-10"></div>
 
                     {/* Text Content */}
-                    <div className="relative z-20 h-full flex items-center justify-end pr-10 text-white  md:text-left">
-                        <div className="max-w-sm  ">
-                            <h1 className="mb-5 uppercase text-5xl font-bold">{currentSlide.title}</h1>
-                            <p className="mb-5 text-xl">{currentSlide.description}</p>
+                    <div className="relative z-20 h-full p-10 flex flex-col  items-center text-white sm:flex-col sm:justify-center sm:items-center md:flex-row md:justify-end md:items-center">
+                        <div className="max-w-xl text-center md:pl-40">
+                            <h1 className="mb-5 uppercase md:text-4xl sm:text-xl font-bold">
+                                {currentSlide.title}
+                            </h1>
+                            <p className="mb-5 md:text-xl sm:text-sm ">
+                                {currentSlide.description}
+                            </p>
                             <Link to="/products">
-                                <button className="btn bg-[#ff0000] text-white hover:bg-gray-200 hover:text-black uppercase">
+                                <button className="btn  bg-[#ff0000]  text-white hover:bg-gray-200 hover:text-black uppercase">
                                     Shop now
                                 </button>
                             </Link>
                         </div>
                     </div>
+
 
                     {/* Arrows */}
                     <button
@@ -131,7 +136,7 @@ const Home = () => {
             <DayOfTheDealCarts />
             <Banner />
             <TrendingItem />
-            
+
             <Testimonials />
             <LatestBlog blogs={blogs} />
             <Topfooter />

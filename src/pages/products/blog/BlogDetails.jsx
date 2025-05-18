@@ -16,12 +16,13 @@ const BlogDetails = ({ blogs, selectedCategories }) => {
           className="border border-gray-300 rounded-lg shadow-md overflow-hidden bg-white"
         >
           <Link to={`/blog/${blog.id}`}>
-            <div className="relative w-full h-48">
+            <div className="relative w-full p-5  h-48">
               <img
-                className="w-full h-full object-cover"
-                src={`/src/assets/${blog.image.replace('./', '')}`}
-                alt={blog.title}
-              />
+                  src={blog.image} // ✅ Use direct image link from JSON
+                  alt={blog.title}
+                  className="w-full h-full object-cover object-center rounded-xl"
+                />
+
             </div>
             <div className="p-4 flex flex-col gap-2">
               <span className="text-sm text-gray-500">

@@ -13,20 +13,20 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/src/assets/Blogs.json")
+    fetch("/Blogs.json")
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching blogs:", error);
+        console.error("Error fetching blog:", error);
         setLoading(false);
       });
   }, []);
 
   useEffect(() => {
-    fetch("/src/assets/BlogCategory.json")
+    fetch("/BlogCategory.json")
       .then((res) => res.json())
       .then((data) => setBlogCategories(data));
   }, []);

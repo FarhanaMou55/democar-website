@@ -112,7 +112,7 @@ const Midheader = () => {
           <ul className="flex flex-col gap-4 text-center text-black font-semibold text-lg">
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link>
-            <Link to="/blogs" onClick={() => setMenuOpen(false)}>Blog</Link>
+            <Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
             <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
             <Link to="/contacts" onClick={() => setMenuOpen(false)} className="text-white bg-red-600 px-4 py-2 rounded hover:bg-black">
               Contact Us

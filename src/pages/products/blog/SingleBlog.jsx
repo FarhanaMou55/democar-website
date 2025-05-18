@@ -14,7 +14,7 @@ const SingleBlog = () => {
   }, []);
 
   useEffect(() => {
-    fetch("/src/assets/Blogs.json")
+    fetch("/Blogs.json")
       .then((res) => res.json())
       .then((data) => {
         const foundBlog = data.find((blog) => blog.id == id);
@@ -37,11 +37,11 @@ const SingleBlog = () => {
           {/* <PageHeader page={"Blog"} /> */}
           <div className="px-4 mb-10">
             <div className="max-w-5xl mx-auto bg-white rounded-lg border border-gray-300 overflow-hidden">
-              <div className="h-64 md:h-80 lg:h-96 overflow-hidden">
-                <img
-                  src={`/src/assets/${blog.image.replace('./', '')}`}
+              <div className="h-64 md:h-80 p-5 lg:h-96 overflow-hidden">
+                 <img
+                  src={blog.image} // ✅ Use direct image link from JSON
                   alt={blog.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center rounded-xl"
                 />
               </div>
 
