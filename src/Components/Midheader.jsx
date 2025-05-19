@@ -16,6 +16,7 @@ const Midheader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   const openModal = (mode) => {
     setAuthMode(mode);
@@ -81,31 +82,69 @@ const Midheader = () => {
       </div>
 
       {/* Mobile View */}
-      <div className='md:hidden flex flex-col items-center mb-7'>
-        <div className="md:hidden w-11/12 mx-auto  flex items-center justify-between">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-3xl text-gray-700">
-            {menuOpen ? <IoClose /> : <IoMenu />}
-          </button>
-          <Link to="/">
-            <img className="h-20 w-auto" src={logo} alt="Logo" />
-          </Link>
-
-        </div>
-        <div className="w-2/3 mx-auto flex items-center pt-4">
-          <div className="relative w-full">
-            <input
-              className="w-full pl-4 pr-14 py-3 text-sm text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-lg focus:outline-none"
-              type="text"
-              placeholder="Search Our Blog"
-            />
-            <div className="absolute right-1 top-1 bottom-1 flex items-center">
-              <div className="h-full aspect-square bg-[#ff0000] text-white rounded-md flex items-center justify-center cursor-pointer hover:text-black transition-colors duration-200">
-                <IoSearchSharp className="text-2xl" />
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Top: Logo */}
+      <div className="w-full flex justify-center md:hidden py-4">
+        <Link to="/" className="flex-shrink-0">
+          <img className="h-16 w-auto mx-auto" src={logo} alt="Logo" />
+        </Link>
       </div>
+
+      {/* Bottom: Menu and Icons Row */}
+      <div className="w-11/12 mx-auto md:hidden flex items-center justify-between">
+        {/* Left: Menu */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-3xl text-gray-700">
+          {menuOpen ? <IoClose /> : <IoMenu />}
+        </button>
+
+        {/* Right: Icons */}
+        <div className="md:hidden mb-5 flex items-center gap-3 relative z-50">
+          {/* USER Dropdown Toggle */}
+          <button
+            onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+            className="relative"
+          >
+            <FaRegUser className="text-2xl text-black" />
+          </button>
+
+          {/* Wishlist Icon with Badge */}
+          <Link to="/wishlist">{renderIconWithBadge(FaRegHeart, wishlistItems.length)}</Link>
+
+          {/* Cart Icon with Badge */}
+          <Link to="/addtocart">{renderIconWithBadge(PiShoppingCart, cartItems.length)}</Link>
+
+          {/* Dropdown Menu */}
+          {userDropdownOpen && (
+            <ul className="absolute top-10 right-0 w-32 bg-white shadow-md rounded-md z-50 py-2">
+              <li>
+                <button
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    setAuthMode("signup");
+                    setIsModalOpen(true);
+                  }}
+                >
+                  Sign Up
+                </button>
+              </li>
+              <li>
+                <button
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    setAuthMode("login");
+                    setIsModalOpen(true);
+                  }}
+                >
+                  Login
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
+
+      </div>
+
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col items-center gap-3 py-6 border-t border-gray-300 w-11/12 mx-auto">
@@ -118,7 +157,7 @@ const Midheader = () => {
               Contact Us
             </Link>
           </ul>
-         
+
         </div>
       )}
 

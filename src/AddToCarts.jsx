@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import HeadDetails from "./Components/HeadDetails";
 import { useGlobalContext } from "./context/GlobalState";
@@ -44,6 +44,9 @@ const AddToCarts = () => {
   const handleProceedToCheckout = () => {
     navigate("/payment"); // ✅ Do NOT clear cart here
   };
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="w-10/12  mx-auto px-4 sm:px-6 lg:px-8">

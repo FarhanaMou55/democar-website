@@ -65,7 +65,7 @@ const Home = () => {
     return (
         <div >
             <div className="w-full sm:h-fit md:h-screen  relative ">
-                <div className=" relative h-full overflow-hidden sm:w-full md:w-10/12 mx-auto">
+                <div className=" relative h-full  sm:w-full md:w-10/12 mx-auto">
                     {/* Background Media */}
                     {currentSlide.type === "video" ? (
                         <video
