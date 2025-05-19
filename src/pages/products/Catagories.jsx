@@ -16,8 +16,14 @@ const Categories = () => {
   }, []);
 
   const handleCategoryClick = (category) => {
-    navigate(`/products?category=${encodeURIComponent(category.name)}`);
+    if (category === "All") {
+      navigate("/products"); 
+    } else {
+      navigate(`/products?category=${encodeURIComponent(category.name)}`);
+    }
+
   };
+
 
   const nextSlide = () => {
     const nextIndex = currentIndex + categoriesPerSlide;

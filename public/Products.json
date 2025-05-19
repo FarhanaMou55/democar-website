@@ -229,7 +229,7 @@
         "price": 45000,
         "discountPrice": 42999,
         "discountPercent": 4,
-        "Model": "2023",
+        "model": "2023",
         "color": "Red",
         "review": 320
     },
@@ -247,7 +247,7 @@
         "price": 41000,
         "discountPrice": 38900,
         "discountPercent": 5,
-        "Model": "2023",
+        "model": "2023",
         "color": "White",
         "review": 195
     },
@@ -265,7 +265,7 @@
         "price": 59000,
         "discountPrice": 55900,
         "discountPercent": 6,
-        "Model": "2024",
+        "model": "2024",
         "color": "Black",
         "review": 215
     }

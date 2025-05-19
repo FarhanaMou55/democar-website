@@ -10,13 +10,12 @@ const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Fetch products from public folder
   useEffect(() => {
     fetch("/Products.json")
       .then((res) => {
@@ -27,14 +26,13 @@ const Products = () => {
         setProducts(data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
+      .catch((err) => {
+        console.error("Error fetching products:", err);
         setError("Failed to load products.");
         setLoading(false);
       });
   }, []);
 
-  // Fetch product categories
   useEffect(() => {
     fetch("/Productscategory.json")
       .then((res) => {
@@ -42,21 +40,20 @@ const Products = () => {
         return res.json();
       })
       .then((data) => setProductCategories(data))
-      .catch((error) => console.error("Error fetching categories:", error));
+      .catch((err) => console.error("Error fetching categories:", err));
   }, []);
 
-  // Read category from URL search param
+  // ✅ Sync selected category from URL
   useEffect(() => {
-    if (products.length === 0) return;
     const categoryParam = searchParams.get("category");
     if (categoryParam) {
-      setSelectedCategories([categoryParam]);
+      setSelectedCategories([decodeURIComponent(categoryParam)]);
     } else {
       setSelectedCategories([]);
     }
-  }, [searchParams, products]);
+  }, [searchParams]);
 
-  // Update search param when selected category changes
+  // ✅ Update URL when selected category changes
   useEffect(() => {
     if (selectedCategories.length > 0) {
       setSearchParams({ category: selectedCategories[0] });
@@ -65,16 +62,16 @@ const Products = () => {
     }
   }, [selectedCategories, setSearchParams]);
 
-  // Filter products by category
+  // ✅ Filter products
   const filteredProducts =
     selectedCategories.length > 0 && selectedCategories[0] !== "All"
-      ? products.filter((product) =>
-          selectedCategories.some(
-            (cat) =>
-              product.category &&
-              product.category.toLowerCase() === cat.toLowerCase()
-          )
-        )
+      ? products.filter((product) => {
+          const productCategory =
+            product.category || product.productDisplayCategory || "";
+          return selectedCategories.some(
+            (cat) => productCategory.toLowerCase() === cat.toLowerCase()
+          );
+        })
       : products;
 
   if (loading) return <div className="text-center">Loading...</div>;
