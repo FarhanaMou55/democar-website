@@ -22,13 +22,14 @@ const LeftCategory = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryParam]);
 
-  const handleCheckboxChange = (categoryName) => {
-    if (categoryName === "All") {
-      setSelectedCategories([]);
+  const handleCheckboxChange = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
     } else {
-      setSelectedCategories([categoryName]); // 👈 Use single selection to match URL-based filtering
+      setSelectedCategories([...selectedCategories, category]);
     }
   };
+
 
   return (
     <div>

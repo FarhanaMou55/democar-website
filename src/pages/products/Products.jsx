@@ -10,7 +10,7 @@ const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,34 +44,32 @@ const Products = () => {
   }, []);
 
   // ✅ Sync selected category from URL
+  // Sync selected categories from URL
   useEffect(() => {
-    const categoryParam = searchParams.get("category");
-    if (categoryParam) {
-      setSelectedCategories([decodeURIComponent(categoryParam)]);
-    } else {
-      setSelectedCategories([]);
-    }
+    const categoryParams = searchParams.getAll("category");
+    setSelectedCategories(categoryParams);
   }, [searchParams]);
 
-  // ✅ Update URL when selected category changes
+  // Update URL when selected categories change
   useEffect(() => {
     if (selectedCategories.length > 0) {
-      setSearchParams({ category: selectedCategories[0] });
+      setSearchParams({ category: selectedCategories });
     } else {
       setSearchParams({});
     }
   }, [selectedCategories, setSearchParams]);
 
+
   // ✅ Filter products
   const filteredProducts =
     selectedCategories.length > 0 && selectedCategories[0] !== "All"
       ? products.filter((product) => {
-          const productCategory =
-            product.category || product.productDisplayCategory || "";
-          return selectedCategories.some(
-            (cat) => productCategory.toLowerCase() === cat.toLowerCase()
-          );
-        })
+        const productCategory =
+          product.category || product.productDisplayCategory || "";
+        return selectedCategories.some(
+          (cat) => productCategory.toLowerCase() === cat.toLowerCase()
+        );
+      })
       : products;
 
   if (loading) return <div className="text-center">Loading...</div>;
